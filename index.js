@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import cors from "cors";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 const app = express();
@@ -8,13 +7,6 @@ app.use(express.json());
 app.use(cookieParser());
 dotenv.config();
 app.use(express.urlencoded({ extended: true })); //to properly parse the form data and make it accessible via req.body in your route handler.
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true,
-  })
-);
 
 mongoose
   .connect(process.env.MONGO)
@@ -43,7 +35,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(
     "check also this if it is working ok thanks for your help to me in the offece 3000"
   );
