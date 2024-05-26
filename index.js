@@ -48,3 +48,8 @@ app.use((err, req, res, next) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log("server running on server port  3000");
 });
+
+//to deploy first complete the run build and add the 0000 ip address  to the mongodp atlas
+//and then come to index.js and import the path module
+//and add dist folder it will created when you run build on back-end
+//then redirect any request to index.html
