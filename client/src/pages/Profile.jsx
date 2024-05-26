@@ -87,17 +87,14 @@ const Profile = () => {
     try {
       dispatch(updateuserstart());
 
-      const response = await fetch(
-        `http://localhost:3000/api/user/update/${currentuser._id}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formdata),
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`/api/user/update/${currentuser._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formdata),
+        credentials: "include",
+      });
 
       const data = await response.json();
 
@@ -119,16 +116,13 @@ const Profile = () => {
     e.preventDefault();
     try {
       dispatch(deletestart());
-      const response = await fetch(
-        `http://localhost:3000/api/user/delete/${currentuser._id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-        }
-      );
+      const response = await fetch(`/api/user/delete/${currentuser._id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
       const data = await response.json();
       if (data.success === false) {
         dispatch(deletefailure(data.message));
@@ -147,7 +141,7 @@ const Profile = () => {
 
     try {
       dispatch(signoutstart());
-      const response = await fetch("http://localhost:3000/api/auth/signout", {
+      const response = await fetch("/api/auth/signout", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -173,15 +167,12 @@ const Profile = () => {
   const showlists = async () => {
     try {
       seterrorlist(false);
-      const response = await fetch(
-        `http://localhost:3000/api/user/getlist/${currentuser._id}`,
-        {
-          //default is get so no need to pass method
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`/api/user/getlist/${currentuser._id}`, {
+        //default is get so no need to pass method
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const data = await response.json();
       if (data.success == false) {
@@ -199,7 +190,7 @@ const Profile = () => {
   const handledeletelist = async (theidtobedeleted) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/listing/deletelisting/${theidtobedeleted}`,
+        `/api/listing/deletelisting/${theidtobedeleted}`,
         {
           method: "delete",
           headers: {

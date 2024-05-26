@@ -13,7 +13,7 @@ export default function Updatelisting() {
   //i will fetch from database here with id of listing
   const { theidtobeupdated } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:3000/api/listing/getlist/${theidtobeupdated}`)
+    fetch(`/api/listing/getlist/${theidtobeupdated}`)
       .then((res) => res.json())
       .then((data) => {
         setFormData(data);
@@ -148,19 +148,16 @@ export default function Updatelisting() {
         return setError("Discount price must be lower than regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch(
-        `http://localhost:3000/api/listing/update/${theidtobeupdated}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            ...formData,
-            userRef: currentuser._id, //we are here sending the user id and it will come back with response and redirect to page
-          }),
-        }
-      );
+      const res = await fetch(`/api/listing/update/${theidtobeupdated}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          userRef: currentuser._id, //we are here sending the user id and it will come back with response and redirect to page
+        }),
+      });
       const data = await res.json();
       setLoading(false);
       if (data.success === false) {

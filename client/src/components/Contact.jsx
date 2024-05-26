@@ -11,9 +11,7 @@ export default function Contact({ listing }) {
   useEffect(() => {
     const fetchLandlord = async () => {
       try {
-        const res = await fetch(
-          `http://localhost:3000/api/user/getuser/${listing.userRef}`
-        ); //this listeing.userRef is coming from listing.jsx as props
+        const res = await fetch(`/api/user/getuser/${listing.userRef}`); //this listeing.userRef is coming from listing.jsx as props
         const data = await res.json();
 
         setLandlord(data.user);
