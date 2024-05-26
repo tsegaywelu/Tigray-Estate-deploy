@@ -293,7 +293,7 @@ const Profile = () => {
       </p>
       <button
         onClick={showlists}
-        className="bg-green-700 p-3 rounded-lg w-full max-w-4xl"
+        className=" bg-gray-100 p-3 rounded-lg w-full max-w-xl"
       >
         show your list
       </button>
