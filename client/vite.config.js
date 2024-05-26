@@ -14,3 +14,4 @@ export default defineConfig({
 
   plugins: [react()],
 });
+//here we do not need to use cors on the back-end because front and back are on the same domain name
