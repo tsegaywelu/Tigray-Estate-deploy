@@ -1,1 +1,1 @@
-hello i am tsegay
+hello i am tsegay. i am the developer of this 
